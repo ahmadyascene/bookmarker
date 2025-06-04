@@ -72,8 +72,8 @@ table {width: 100%; border-spacing: 0;}
 tbody>:nth-child(n+2)>* {border-top: .0625em solid #bec3c9;}
 td {text-align: center; padding: .75em;}
 
-a {color: #36c; -webkit-tap-highlight-color: #0000; display: inline-flex;
-  align-items: center;}
+a {color: #36c; -webkit-tap-highlight-color: #0000; white-space: nowrap;
+  display: inline-flex; align-items: center;}
 a:visited {color: #6b4ba1;}
 a:is(:hover,:focus-visible) {color: #447ff5;}
 a:active {color: #2a4b8d;}
@@ -158,6 +158,8 @@ form.onsubmit=e=>{e.preventDefault();
     message('Already bookmarked'); form.url.focus(); return;}
   bookmarks.splice(i,1,{name:form.name.value,url:l}); update();
   message('Bookmark saved',1); form.name.focus();};
+
+form.url.oninput=()=>form.url.value=form.url.value.replaceAll(' ','');
 
 search.oninput=render;
 search.onfocus=()=>search.previousElementSibling.className='lu';

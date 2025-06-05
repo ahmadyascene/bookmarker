@@ -136,8 +136,8 @@ const form=document.forms[0], dialog=form.querySelector('dialog'),
           <td><a href="${url}" target="_blank">
             <img src=https://www.google.com/s2/favicons?domain=${url}
             alt="favicon">&nbsp;${name}</a></td>
-          <td><button class="ib be">&nbsp;Edit</button></td>
-          <td><button class="ib bd">&nbsp;Delete</button></td></tr>`;
+          <td><button class="ib be" data-i=${i}>&nbsp;Edit</button></td>
+          <td><button class="ib bd" data-i=${i}>&nbsp;Delete</button></td></tr>`;
       table.innerHTML=rows||'<tr><td colspan="4">No bookmarks</td></tr>';}
     else {search.parentElement.hidden=true; table.innerHTML='';}},
   update=()=>{localStorage.setItem('bookmarks',JSON.stringify(bookmarks));
@@ -168,10 +168,10 @@ search.onblur=()=>{if (!search.value&&!search.matches(':focus'))
 
 table.onclick=e=>{
   if (e.target.classList.contains('be')) {
-    i=e.target.closest('tr').rowIndex; form.name.value=bookmarks[i].name;
+    i=e.target.dataset.i; form.name.value=bookmarks[i].name;
     form.url.value=bookmarks[i].url; button.textContent='Save'; form.name.focus();}
   else if (e.target.classList.contains('bd')) {
-    bookmarks.splice(e.target.closest('tr').rowIndex,1); update();}};
+    bookmarks.splice(e.target.dataset.i,1); update();}};
 
 background.onchange=()=>
   localStorage.setItem('background',JSON.stringify(background.checked));

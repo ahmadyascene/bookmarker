@@ -14,74 +14,72 @@
 html {position: relative;}
 @keyframes fadeIn {0% {opacity: 0;}}
 body {color: #212529; font-family: 'Encode Sans Expanded', system-ui;
-  min-height: calc(100dvh - 2em); padding-bottom: 2em; margin: 0 .75em;
+  min-height: calc(100dvh - 2.75em); padding-bottom: 2.75em; margin: 0 .75em;
   display: flex; flex-flow: column; justify-content: center;
   animation: .75s cubic-bezier(.75,0,.75,.9) fadeIn;}
-body:has([name=background]:checked) {background: #f0ece3;}
+body:has(>#background:checked) {background: #f0ece3;}
 @media (width>=36em) {body {width: 32.25em; margin-inline: auto;}}
 @media (width>=48em) {body {width: 43.5em;}}
 
+:is(#background,label,.d1,.be,.bd)::before {font-family: s;}
 h1, .ib.b {font-family: Pacifico, system-ui;}
-:is(label,.d1,.be,.bd,[name=background])::before {font-family: s;}
 .ib {font-size: inherit; line-height: 1.5; font-family: inherit;
-  border: .0625em solid; border-radius: .375em;}
+  border: .0625em solid; border-radius: .5em;}
 .i {color: inherit; width: 100%; padding: .625em .75em; border-color: #bec3c9;
   box-sizing: border-box; transition: border-color .15s;}
+label:not(:has(>span))>.i {margin-block: .3125em .75em;}
 .i:focus {border-color: #596e79; outline: 0;}
 button:enabled {-webkit-tap-highlight-color: #0000; cursor: pointer;}
-::-webkit-search-cancel-button {font-size: 1.25em; padding: .5em; margin: 0;
-  translate: .5em;}
-a {-webkit-tap-highlight-color: #0000;}
+a {-webkit-tap-highlight-color: #0000; outline: 0;}
 a:not(:hover,:focus-visible) {text-decoration: none;}
-a:focus-visible {outline: 0;}
 
-[name=background] {appearance: none; font-size: inherit; padding: 1em;
-  border-radius: .75em; outline-offset: -.3125em; margin: 0; position: absolute;
-  top: 0; right: 0; cursor: pointer;}
-[name=background]:focus-visible {outline: .0625em solid #596e79;}
-[name=background]::before {content: '\f042'; color: #596e79; background: #f0ece3;
-  font-size: 1.125em; vertical-align: bottom; border-radius: 50%;}
-[name=background]:checked::before {background: #fff;}
+#background {appearance: none; padding: 1.2em; border-radius: .9em; margin: 0;
+  position: absolute; top: 0; right: 0; cursor: pointer;}
+#background:focus-visible {outline: .075em solid #596e79;
+  outline-offset: -.375em;}
+#background::before {content: '\f042'; color: #596e79; background: #f0ece3;
+  font-size: 1.35em; border-radius: 50%;}
+#background:checked::before {background: #fff;}
 
-h1 {font-weight: 400; font-size: 2.5em; width: fit-content; margin-inline: auto;
-  position: relative;}
-h1::before {content: ''; background: #647b87; border-radius:0 0 .12em .12em;
-  position: absolute; inset: 1.05em 0 .3em; z-index: -1; transition: .3s;}
+h1 {color: #596e79; font-weight: 400; font-size: 2.5em; width: fit-content;
+  margin-inline: auto; position: relative;}
+h1::before {content: ''; background: #dfd3c3; border-radius: 0 0 .15em .15em;
+  position: absolute; inset: 1.05em 0 .3em; z-index: -1; transition: top .3s;}
 h1:hover::before {top: .68em;}
 
-label:has([name=name])::before {content: '\e0bb';}
-label:has([name=url])::before {content: '\f0c1';}
-label:not(:has(span))>.i {margin-block: .3125em .75em;}
+label:has(>#name)::before {content: '\e0bb';}
+label:has(>#url)::before {content: '\f0c1';}
 
 .d {box-shadow: .3em .3em .3em #0003; font-size: .9em; line-height: 1.7361;
-  max-width: min(25em,calc(100% - 4.512em));
-  padding: .8333em .5556em .8333em 2.7083em; border: .0694em solid #bec3c9;
-  border-radius: .2778em; z-index: 1;}
-.d:focus-visible {outline: .0695em solid #808080;}
-.d::before {width: 1.7361em; position: absolute; left: .5556em;}
+  max-width: min(25em,calc(100% - 3.2639em - 26px));
+  padding: .8333em .5556em .8333em 2.7083em; border: .069445em solid #bec3c9;
+  border-radius: .5em; z-index: 1;}
+.d::before {position: absolute; left: .5556em;}
 .d0::before {content: '!'; color: #fff; background: #ff8c00; font-weight: 700;
-  text-align: center; border-radius: .2083em;}
-.d1::before {content: '\f058'; color: #596e79; scale: 1.73; transform-origin: 0;}
+  text-align: center; width: 1.7361em; border-radius: .25em;}
+.d1::before {content: '\f058'; color: #596e79; scale: 1.7361;
+  transform-origin: 0;}
 
-.b {background: #596e79; font-size: 1.25em; width: 100%; padding: .35em .75em;
-  border-color: #0000; transition: background .15s;}
+.b {color: #dfd3c3; background: #596e79; font-size: 1.25em; width: 100%;
+  padding: .35em .75em; border-color: #0000; transition: background .15s;}
 .b:focus-visible {outline: .0625em solid #596e79;}
 .b:enabled:hover {background: #647b87;}
 .b:enabled:active {background: #4e606a;}
 
-label:has([name=search]) {margin-block: .75em; position: relative;}
-label:has([name=search])::before {content: '\f002'; color: #6c757d;
-  position: absolute; top: 50%; translate: 0 -50%; left: .75em;}
-label:has([name=search]:focus)::before {color: #596e79;}
-label:has([name=search])>.i {padding-left: 2.1em;}
+label:has(>span) {margin-block: .75em; position: relative;}
+label:has(>.is)::before {content: '\f002'; color: #6c757d; position: absolute;
+  top: 50%; left: .8125em; translate: 0 -50%; transition: color .15s;}
+label:has(>.is:focus)::before {color: #596e79;}
 label>span {color: #6c757d; text-overflow: ellipsis; white-space: nowrap;
-  max-width: calc(100% - 1.5em); padding-inline: .3em; overflow: hidden;
-  position: absolute; transform-origin: 0; translate: 1.8em -50%;
-  transition: background .15s, top .15s, translate .15s, scale .15s;
+  max-width: calc(100% - 1.5em); padding-inline: .25em; overflow: hidden;
+  position: absolute; transform-origin: 0; translate: .5625em -50%;
+  transition: color .15s, background .15s, top .15s, translate .15s, scale .15s;
   -webkit-user-select: none; user-select: none; pointer-events: none;}
+span:has(+.is) {max-width: calc(100% - 2.875em); translate: 1.9375em -50%;}
 label>span:not(.lu) {top: 50%;}
-.lu {background: #fff; top: 0; translate: .525em -50%; scale: .75;}
-label:has(input:focus)>span {color: #596e79;}
+span.lu {background: #fff; top: 0; translate: .625em -50%; scale: .75;}
+label:has(>input:focus)>span {color: #596e79;}
+.is {padding-left: 2.125em;}
 
 div:has(>table) {background: #fff; overflow: auto; border-radius: .5em;
   margin-bottom: 1em;}
@@ -109,8 +107,9 @@ table a>img {width: 1em;}
 .bd:active {color: #fff; background: #a52834;}
 .bd::before {content: '\f1f8';}
 
-footer {display: flex; justify-content: center; align-items: center;
-  position: absolute; inset: auto 0 0;}
+footer {padding-bottom: .25em; display: flex; flex-flow: wrap;
+  justify-content: center; align-items: center; position: absolute;
+  inset: auto 0 0;}
 footer>ul {list-style: none; padding-left: 0; margin-block: 0; display: flex;}
 footer a {color: inherit; line-height: 2em; font-family: b; text-align: center;
   width: 2em; display: block;}
@@ -120,25 +119,25 @@ footer [href*=github]::before {content: '\f09b';}
 footer [href*=linkedin]::before {content: '\f08c';}
 footer [href*=wa]::before {content: '\f232';}
 footer>small {color: #000; font-weight: 300; letter-spacing: .0375em;
-  padding: .3em;}
+  padding-inline: .6em;}
   </style>
 </head>
 <body>
-  <input type="checkbox" name="background">
+  <input type="checkbox" id="background">
   <h1>Bookmarker</h1>
   <form>
     <label>&nbsp;Name
-      <input name="name" placeholder="e.g. Google" autofocus class="ib i">
+      <input placeholder="e.g. Google" autofocus id="name" class="ib i">
     </label>
     <dialog></dialog>
     <label>&nbsp;URL
       <!--type="url" requires a scheme even though we'd assume "http://"-->
-      <input name="url" placeholder="e.g. google.com" class="ib i">
+      <input placeholder="e.g. google.com" id="url" class="ib i">
     </label>
     <button class="ib b">Bookmark</button>
   </form>
   <label><span>Search bookmarks</span>
-    <input type="search" name="search" class="ib i">
+    <input type="search" id="search" class="ib i is">
   </label>
   <div><table><tbody></tbody></table></div>
   <footer>
@@ -152,10 +151,10 @@ footer>small {color: #000; font-weight: 300; letter-spacing: .0375em;
   </footer>
   <script>
 'use strict';
-const background=document.querySelector('[name=background]'),
-  form=document.forms[0], dialog=form.querySelector('dialog'),
-  button=form.querySelector('button'),
-  search=document.querySelector('[name=search]'),
+const background=document.getElementById('background'),
+  name=document.getElementById('name'), form=name.parentElement.parentElement,
+  dialog=form.querySelector('dialog'), url=document.getElementById('url'),
+  button=form.querySelector('button'), search=document.getElementById('search'),
   table=document.querySelector('tbody'),
   bookmarks=JSON.parse(localStorage.getItem('bookmarks'))||[],
   render=()=>{
@@ -177,36 +176,41 @@ const background=document.querySelector('[name=background]'),
     else {search.parentElement.hidden=true; table.innerHTML='';}},
   update=()=>{localStorage.setItem('bookmarks',JSON.stringify(bookmarks));
     i=bookmarks.length; form.reset(); button.textContent='Bookmark'; render();},
-  message=(m,b=0)=>{dialog.textContent=m; dialog.className='d d'+b;
-    clearTimeout(n); dialog.show(); n=setTimeout(()=>dialog.close(),4000);};
-let i=bookmarks.length, n;
+  message=(m,b=0)=>{dialog.className='d d'+b; dialog.textContent=m;
+    clearTimeout(t); dialog.show(); t=setTimeout(()=>dialog.close(),4000);};
+let i=bookmarks.length, t;
 
 background.checked=JSON.parse(localStorage.getItem('background'));
 render();
+
+onload=()=>{ //chrome
+  if (search.value) render(); //chrome
+  for (const i of document.querySelectorAll('span+.i')) {
+    if (i.value) i.previousElementSibling.className='lu';
+    i.oninput=()=>{i.previousElementSibling.className='lu'; //firefox
+      if (i==search) {render(); search.oninput=render;} else i.oninput=null;};
+    i.onfocus=()=>i.previousElementSibling.className='lu';
+    i.onblur=()=>{if (!i.value&&!i.matches(':focus'))
+      i.previousElementSibling.className='';};}};
 
 background.onchange=()=>
   localStorage.setItem('background',JSON.stringify(background.checked));
 
 form.onsubmit=e=>{e.preventDefault();
   if (!/^(?:https?:\/\/)?(?:(?:\b[a-z\d-]{1,64}\b\.){1,128}[a-z]{2,64}|(?:(?:\d{1,3}\.){3}\d{1,3}))(?:\:0*(?:[0-5]?\d{1,4}|6(?:[0-4]\d{1,3}|5(?:[0-4]\d{1,2}|5(?:[012]\d|3[0-5])))))?(?:\/[\w%.~+-]*)*(?:\?[\w;&%.~+=-]*)?(?:\#[\w-]*)?$/i
-    .test(form.url.value)) {message('Invalid URL'); form.url.focus(); return;}
-  const l=form.url.value.includes('://')?form.url.value:'http://'+form.url.value;
-  for (const {url} of bookmarks) if (url==l&&url!=bookmarks[i]?.url) {
-    message('Already bookmarked'); form.url.focus(); return;}
-  bookmarks.splice(i,1,{name:form.name.value,url:l}); update();
-  message('Bookmark saved',1); form.name.focus();};
+    .test(url.value)) {message('Invalid URL'); url.focus(); return;}
+  const l=url.value.includes('://')?url.value:'http://'+url.value;
+  for (const {url:ol} of bookmarks) if (ol==l&&ol!=bookmarks[i]?.url) {
+    message('Already bookmarked'); url.focus(); return;}
+  bookmarks.splice(i,1,{name:name.value,url:l}); update();
+  message('Bookmark saved',1); name.focus();};
 
-form.url.oninput=()=>form.url.value=form.url.value.replaceAll(' ','');
-
-search.oninput=render;
-search.onfocus=()=>search.previousElementSibling.className='lu';
-search.onblur=()=>{if (!search.value&&!search.matches(':focus'))
-  search.previousElementSibling.className='';};
+url.oninput=()=>url.value=url.value.replaceAll(' ','');
 
 table.onclick=({target})=>{
   if (target.classList.contains('be')) {
-    i=target.dataset.i; form.name.value=bookmarks[i].name;
-    form.url.value=bookmarks[i].url; button.textContent='Save'; form.name.focus();}
+    i=target.dataset.i; name.value=bookmarks[i].name;
+    url.value=bookmarks[i].url; button.textContent='Save'; name.focus();}
   else if (target.classList.contains('bd')) {
     bookmarks.splice(target.dataset.i,1); update();}};
   </script>

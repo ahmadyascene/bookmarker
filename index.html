@@ -87,6 +87,10 @@ table {width: 100%; border-spacing: 0;}
 tbody>:nth-child(n+2)>* {border-top: .0625em solid #bec3c9;}
 td {text-align: center; padding: .75em;}
 
+table .i {appearance: textfield; font-size: revert; text-align: center;
+  width: 3.75em; aspect-ratio: 1.618034; padding: 0;}
+table .i::-webkit-inner-spin-button {display: none;}
+
 table a {color: #36c; white-space: nowrap; display: inline-flex;
   align-items: center;}
 table a:visited {color: #6b4ba1;}
@@ -164,7 +168,7 @@ const background=document.getElementById('background'),
           name.toLowerCase().includes(search.value.toLowerCase())||
           url.toLowerCase().includes(search.value.toLowerCase()))
           rows+=`<tr>
-            <td>${i+1}</td>
+            <td><input type=number value=${i+1} data-i=${i} class="ib i"></td>
             <td><a href="${url}" target="_blank">
               <img src=https://www.google.com/s2/favicons?domain=${url} alt="favicon">
               &nbsp;${name}
@@ -172,7 +176,12 @@ const background=document.getElementById('background'),
             <td><button class="ib be" data-i=${i}>&nbsp;Edit</button></td>
             <td><button class="ib bd" data-i=${i}>&nbsp;Delete</button></td>
           </tr>`;
-      table.innerHTML=rows||'<tr><td colspan="4">No search results found</td></tr>';}
+      table.innerHTML=rows||'<tr><td colspan="4">No search results found</td></tr>';
+      for (const i of table.querySelectorAll('input')) i.onchange=()=>{
+        const v=parseInt(i.value);
+        bookmarks.splice(v>0?v-1:v<-1?v+1:v==-1?bookmarks.length:0,0,
+          bookmarks.splice(i.dataset.i,1)[0]);
+        update();};}
     else {search.parentElement.hidden=true; table.innerHTML='';}},
   update=()=>{localStorage.setItem('bookmarks',JSON.stringify(bookmarks));
     i=bookmarks.length; form.reset(); button.textContent='Bookmark'; render();},

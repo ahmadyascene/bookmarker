@@ -176,7 +176,8 @@ const background=document.getElementById('background'),
     {"name":"Google Meet","url":"https://meet.google.com"},
     {"name":"The Useless Web","url":"https://theuselessweb.com"}],
   render=()=>{
-    if (bookmarks.length) {search.parentElement.hidden=false;
+    if (bookmarks.length) {
+      table.parentElement.parentElement.hidden=search.parentElement.hidden=false;
       let rows=''; for (const [i,{name,url}] of bookmarks.entries())
         if (!search.value||
           name.toLowerCase().includes(search.value.toLowerCase())||
@@ -196,7 +197,7 @@ const background=document.getElementById('background'),
         bookmarks.splice(v>0?v-1:v<-1?v+1:v==-1?bookmarks.length:0,0,
           bookmarks.splice(i.dataset.i,1)[0]);
         update();};}
-    else {search.parentElement.hidden=true; table.innerHTML='';}},
+    else table.parentElement.parentElement.hidden=search.parentElement.hidden=true;},
   update=()=>{localStorage.setItem('bookmarks',JSON.stringify(bookmarks));
     i=bookmarks.length; form.reset(); button.textContent='Bookmark'; render();},
   message=(m,b=0)=>{dialog.className='d d'+b; dialog.textContent=m;
